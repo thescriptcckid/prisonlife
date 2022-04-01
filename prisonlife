@@ -1,0 +1,135 @@
+if game.PlaceId == 155615604 then
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-920.510803, 95.327179, 2138.27002, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+	game.Players.LocalPlayer.Character.Humanoid.Health = 3989898
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+	local Window = Library.CreateLib("HumanoidPower (by gengrab&shuv)", "Ocean")
+	
+	
+	local Main = Window:NewTab("Main")
+	local MainSection = Main:NewSection("Main")
+	MainSection:NewDropdown("Gun Giver", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47", "Breakfast"}, function(v)
+
+		local args = {
+    		[1] = workspace.Prison_ITEMS.giver:FindFirstChild(v).ITEMPICKUP
+		}
+
+	workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+	end)
+		MainSection:NewDropdown("GamePass Gun Giver [GP REQUIRED]", "Gives the localplayer a gun", {"M4A1", "Riot Shield"}, function(v)
+
+		local args = {
+    		[1] = workspace.Prison_ITEMS.giver:FindFirstChild(v).ITEMPICKUP
+		}
+
+	workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+	end)
+	
+
+    MainSection:NewDropdown("Gun Mod", "Makes the gun op", {"M9", "Remington 870", "AK-47"}, function(v)
+        local module = nil
+        if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Character[v].GunStates)
+        end
+        if module ~= nil then
+            module["MaxAmmo"] = 4894548
+            module["CurrentAmmo"] = 4894548
+            module["StoredAmmo"] = 1
+            module["FireRate"] = 0.05
+            module["Spread"] = 0
+            module["Range"] = math.huge
+            module["Bullets"] = 20
+            module["ReloadTime"] = 0.00000001
+            module["AutoFire"] = true
+        end
+    end)
+    MainSection:NewButton("Inf Yield 6.5", "gives infinite yield if script bad :(", function()
+    	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    	end)
+    	    MainSection:NewButton("Inf Yield 6.4", "gives infinite yield 6.4 if script bad :(", function()
+    	loadstring(game:HttpGet('https://raw.githubusercontent.com/thescriptcckid/prisonlife/main/infyield64'))()
+    	end)
+    	
+    	
+	local Player = Window:NewTab("Player")
+	local PlayerSection = Player:NewSection("Player")
+	PlayerSection:NewSlider("WalkSpeed", "Changes the walkspeed", 200, 1, function(v)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+		end)
+	PlayerSection:NewSlider("JumpP", "Changes the jumppower", 200, 1, function(x)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = x
+		end)
+	PlayerSection:NewSlider("Health [res]", "Changes your health", 200, 1, function(y)
+		game.Players.LocalPlayer.Character.Humanoid.Health = y
+		end)
+	PlayerSection:NewButton("Spam!", "Lags the rp chat", function()
+	while true do
+		local args = {
+    		[1] = "GET HUMANOIDPOWER",
+    		[2] = "All"
+		}
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+wait(1)
+end
+end)
+	PlayerSection:NewButton("GUNMODLAG", "Credits to gengrab", function()
+	local module = nil
+        if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("AK-47") then
+            module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Character["AK-47"].GunStates)
+        end
+        if module ~= nil then
+            module["MaxAmmo"] = 4894548
+            module["CurrentAmmo"] = 4894548
+            module["StoredAmmo"] = 1
+            module["FireRate"] = 0.0000001
+            module["Spread"] = math.huge
+            module["Range"] = math.huge
+            module["Bullets"] = 999
+            module["ReloadTime"] = 0.00000001
+            module["AutoFire"] = true
+        end
+    end)
+	
+	PlayerSection:NewButton("Restart GUI", "Restarts every component", function()
+		game.Players.LocalPlayer.Character.Humanoid.Health = 0
+	end)
+	
+	local TP = Window:NewTab("Teleport")
+	local TPSection = TP:NewSection("Teleport")
+	TPSection:NewButton("Yard", "TPs to Yard.", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(848.936218, 98.1899185, 2403.82007, -0.999206126, -7.43814041e-08, 0.0398380868, -7.76429872e-08, 1, -8.03238009e-08, -0.0398380868, -8.33531857e-08, -0.999206126)
+	end)
+	TPSection:NewButton("Inside", "TPs to Prison.", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(852.696716, 99.9899826, 2361.48218, 0.0186691917, -3.67720276e-09, -0.999825716, 5.09113462e-09, 1, -3.58277985e-09, 0.999825716, -5.02335951e-09, 0.0186691917)
+	end)
+	TPSection:NewButton("Armory", "TPs to Armory.", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(836.979431, 99.9899826, 2268.21191, 0.999839783, -5.254212e-08, 0.0179005992, 5.39087885e-08, 1, -7.58650316e-08, -0.0179005992, 7.68178694e-08, 0.999839783)
+	end)
+		TPSection:NewButton("Base", "TPs to Base.", function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-920.510803, 95.327179, 2138.27002, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+	end)
+	
+	local client = Window:NewTab("Client stuff")
+	local clients = client:NewSection("Client stuff")
+	clients:NewButton("AntiKick", "Fucks up the anti cheat system", function()
+	while true do
+		game.Players.LocalPlayer.PlayerGui.Home.hud.Topbar.titleBar.Title.Text = "anti kick on"
+		wait(1)
+		end
+		end)
+		clients:NewKeybind("GUI toggle", "toggles gui", Enum.KeyCode.RightShift, function()
+	Library:ToggleUI()
+end)
+clients:NewTextBox("GunGiverV2", "gets a gun by it's nick", function(txt)
+
+		local args = {
+    		[1] = workspace.Prison_ITEMS.giver:FindFirstChild(txt).ITEMPICKUP
+		}
+
+	workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+end)
+	end
